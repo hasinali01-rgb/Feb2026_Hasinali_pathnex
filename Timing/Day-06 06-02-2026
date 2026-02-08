@@ -1,0 +1,25 @@
+# Timing Script - Day 06 (06-02-2026)
+
+import time
+from datetime import datetime
+
+def log_timing(event_name, duration=None):
+    """Log timing information for an event."""
+    timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    if duration:
+        print(f"[{timestamp}] {event_name}: {duration}ms")
+    else:
+        print(f"[{timestamp}] {event_name}")
+
+def measure_execution(func, *args, **kwargs):
+    """Measure execution time of a function."""
+    start = time.time()
+    result = func(*args, **kwargs)
+    duration = (time.time() - start) * 1000
+    log_timing(func.__name__, duration)
+    return result
+
+if __name__ == "__main__":
+    log_timing("Timing session started")
+    # Add your timing measurements here
+    log_timing("Timing session ended")
